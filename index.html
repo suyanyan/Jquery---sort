@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            width: 1000px;
+        }
+        td{
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        input{
+            margin-right:60px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <h1></h1>
+    <table>
+        <thead>
+        <tr>
+            <td width="25%">名称</td>
+            <td width="25%">类型</td>
+            <td width="25%">大小</td>
+            <td width="25%">日期</td>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+<input type="button" class="btn1" value="名称升序排列" onclick="nameFn()">
+<input type="button" class="btn2" value="类型升序排列" onclick="ExtFn()">
+<input type="button" class="btn3" value="大小升序排列" onclick="SizeFn()">
+<input type="button" class="btn4" value="日期升序排列" onclick="DateFn()">
+<ul class="sort">
+
+</ul>
+</body>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    var arr = [
+        {
+            fileLogicCreateDatetime: "2018-08-21 11:49:04",
+            fileLogicHomeType: 3,
+            fileLogicIsDeletable: true,
+            fileLogicIsDeleted: false,
+            fileLogicIsOnlined: true,
+            fileLogicIsUpdatable: true,
+            fileLogicLevelCode: "1-232-233-234-3048-3060-3073-3082-59149",
+            fileLogicNameBase: "吧bxyze2353",
+            fileLogicNameExt: "jpg",
+            fileLogicSize: 24913,
+            fileLogicStatus: "SUCCESS",
+            fileLogicUpdateDatetime: "2018-08-21 11:49:03",
+            fileLogicUploadDatetime: "2018-08-21 11:49:03",
+            idArchiveSelf: null,
+            idArchiveTemplate: null,
+            idFileLogic: 6546,
+            idFileLogicClient: "8dcaf2bc7fae467d8ea6c249ebce9afd",
+            idFileLogicGrandpa: null,
+            idFileLogicGrpFormatPropertyName: 55,
+            idFileLogicGrpObjectClassifyRod: 8,
+            idFileLogicParasitifer: null,
+            idFileLogicParent: 3082,
+            idFilePhysics: 25120,
+            idUserFileLogicOwner: 14,
+        },
+        {
+            fileLogicCreateDatetime: "2008-08-21 11:49:04",
+            fileLogicHomeType: 3,
+            fileLogicIsDeletable: true,
+            fileLogicIsDeleted: false,
+            fileLogicIsOnlined: true,
+            fileLogicIsUpdatable: true,
+            fileLogicLevelCode: "1-232-233-234-3048-3060-3073-3082-59149",
+            fileLogicNameBase: "啊bxyze2353",
+            fileLogicNameExt: "png",
+            fileLogicSize: 165146,
+            fileLogicStatus: "SUCCESS",
+            fileLogicUpdateDatetime: "2018-08-21 11:49:03",
+            fileLogicUploadDatetime: "2018-08-21 11:49:03",
+            idArchiveSelf: null,
+            idArchiveTemplate: null,
+            idFileLogic: 59149,
+            idFileLogicClient: "8dcaf2bc7fae467d8ea6c249ebce9afd",
+            idFileLogicGrandpa: null,
+            idFileLogicGrpFormatPropertyName: 55,
+            idFileLogicGrpObjectClassifyRod: 8,
+            idFileLogicParasitifer: null,
+            idFileLogicParent: 3082,
+            idFilePhysics: 25120,
+            idUserFileLogicOwner: 14,
+        },
+        {
+            fileLogicCreateDatetime: "2018-11-21 11:49:04",
+            fileLogicHomeType: 3,
+            fileLogicIsDeletable: true,
+            fileLogicIsDeleted: false,
+            fileLogicIsOnlined: true,
+            fileLogicIsUpdatable: true,
+            fileLogicLevelCode: "1-232-233-234-3048-3060-3073-3082-59149",
+            fileLogicNameBase: "从bxyze2353",
+            fileLogicNameExt: "Jpg",
+            fileLogicSize: 165146,
+            fileLogicStatus: "SUCCESS",
+            fileLogicUpdateDatetime: "2018-08-21 11:49:03",
+            fileLogicUploadDatetime: "2018-08-21 11:49:03",
+            idArchiveSelf: null,
+            idArchiveTemplate: null,
+            idFileLogic: 59149,
+            idFileLogicClient: "8dcaf2bc7fae467d8ea6c249ebce9afd",
+            idFileLogicGrandpa: null,
+            idFileLogicGrpFormatPropertyName: 55,
+            idFileLogicGrpObjectClassifyRod: 8,
+            idFileLogicParasitifer: null,
+            idFileLogicParent: 3082,
+            idFilePhysics: 25120,
+            idUserFileLogicOwner: 14,
+        },
+        {
+            fileLogicCreateDatetime: "2018-08-21 11:49:04",
+            fileLogicHomeType: 3,
+            fileLogicIsDeletable: true,
+            fileLogicIsDeleted: false,
+            fileLogicIsOnlined: true,
+            fileLogicIsUpdatable: true,
+            fileLogicLevelCode: "1-232-233-234-3048-3060-3073-3082-59149",
+            fileLogicNameBase: "的bxyze2353",
+            fileLogicNameExt: "doc",
+            fileLogicSize: 59589,
+            fileLogicStatus: "SUCCESS",
+            fileLogicUpdateDatetime: "2018-08-21 11:49:03",
+            fileLogicUploadDatetime: "2018-08-21 11:49:03",
+            idArchiveSelf: null,
+            idArchiveTemplate: null,
+            idFileLogic: 59149,
+            idFileLogicClient: "8dcaf2bc7fae467d8ea6c249ebce9afd",
+            idFileLogicGrandpa: null,
+            idFileLogicGrpFormatPropertyName: 55,
+            idFileLogicGrpObjectClassifyRod: 8,
+            idFileLogicParasitifer: null,
+            idFileLogicParent: 3082,
+            idFilePhysics: 25120,
+            idUserFileLogicOwner: 14,
+        },
+        {
+            fileLogicCreateDatetime: "2018-08-28 11:49:04",
+            fileLogicHomeType: 3,
+            fileLogicIsDeletable: true,
+            fileLogicIsDeleted: false,
+            fileLogicIsOnlined: true,
+            fileLogicIsUpdatable: true,
+            fileLogicLevelCode: "1-232-233-234-3048-3060-3073-3082-59149",
+            fileLogicNameBase: "Abxyze2353",
+            fileLogicNameExt: "jpg",
+            fileLogicSize: 89,
+            fileLogicStatus: "SUCCESS",
+            fileLogicUpdateDatetime: "2018-08-21 11:49:03",
+            fileLogicUploadDatetime: "2018-08-21 11:49:03",
+            idArchiveSelf: null,
+            idArchiveTemplate: null,
+            idFileLogic: 59149,
+            idFileLogicClient: "8dcaf2bc7fae467d8ea6c249ebce9afd",
+            idFileLogicGrandpa: null,
+            idFileLogicGrpFormatPropertyName: 55,
+            idFileLogicGrpObjectClassifyRod: 8,
+            idFileLogicParasitifer: null,
+            idFileLogicParent: 3082,
+            idFilePhysics: 25120,
+            idUserFileLogicOwner: 14,
+        },
+        {
+            fileLogicCreateDatetime: "2018-08-24 11:49:04",
+            fileLogicHomeType: 3,
+            fileLogicIsDeletable: true,
+            fileLogicIsDeleted: false,
+            fileLogicIsOnlined: true,
+            fileLogicIsUpdatable: true,
+            fileLogicLevelCode: "1-232-233-234-3048-3060-3073-3082-59149",
+            fileLogicNameBase: "Bbxyze2353",
+            fileLogicNameExt: "xls",
+            fileLogicSize: 8999,
+            fileLogicStatus: "SUCCESS",
+            fileLogicUpdateDatetime: "2018-08-21 11:49:03",
+            fileLogicUploadDatetime: "2018-08-21 11:49:03",
+            idArchiveSelf: null,
+            idArchiveTemplate: null,
+            idFileLogic: 59149,
+            idFileLogicClient: "8dcaf2bc7fae467d8ea6c249ebce9afd",
+            idFileLogicGrandpa: null,
+            idFileLogicGrpFormatPropertyName: 55,
+            idFileLogicGrpObjectClassifyRod: 8,
+            idFileLogicParasitifer: null,
+            idFileLogicParent: 3082,
+            idFilePhysics: 25120,
+            idUserFileLogicOwner: 14,
+        },
+        {
+            fileLogicCreateDatetime: "2018-08-21 11:57:04",
+            fileLogicHomeType: 3,
+            fileLogicIsDeletable: true,
+            fileLogicIsDeleted: false,
+            fileLogicIsOnlined: true,
+            fileLogicIsUpdatable: true,
+            fileLogicLevelCode: "1-232-233-234-3048-3060-3073-3082-59149",
+            fileLogicNameBase: "bxyze2353",
+            fileLogicNameExt: "jpg",
+            fileLogicSize: 2326,
+            fileLogicStatus: "SUCCESS",
+            fileLogicUpdateDatetime: "2018-08-21 11:49:03",
+            fileLogicUploadDatetime: "2018-08-21 11:49:03",
+            idArchiveSelf: null,
+            idArchiveTemplate: null,
+            idFileLogic: 59149,
+            idFileLogicClient: "8dcaf2bc7fae467d8ea6c249ebce9afd",
+            idFileLogicGrandpa: null,
+            idFileLogicGrpFormatPropertyName: 55,
+            idFileLogicGrpObjectClassifyRod: 8,
+            idFileLogicParasitifer: null,
+            idFileLogicParent: 3082,
+            idFilePhysics: 25120,
+            idUserFileLogicOwner: 14,
+        },
+        {
+            fileLogicCreateDatetime: "2018-09-21 11:49:04",
+            fileLogicHomeType: 3,
+            fileLogicIsDeletable: true,
+            fileLogicIsDeleted: false,
+            fileLogicIsOnlined: true,
+            fileLogicIsUpdatable: true,
+            fileLogicLevelCode: "1-232-233-234-3048-3060-3073-3082-59149",
+            fileLogicNameBase: "xyze2353",
+            fileLogicNameExt: "db",
+            fileLogicSize: 89748,
+            fileLogicStatus: "SUCCESS",
+            fileLogicUpdateDatetime: "2018-08-21 11:49:03",
+            fileLogicUploadDatetime: "2018-08-21 11:49:03",
+            idArchiveSelf: null,
+            idArchiveTemplate: null,
+            idFileLogic: 59149,
+            idFileLogicClient: "8dcaf2bc7fae467d8ea6c249ebce9afd",
+            idFileLogicGrandpa: null,
+            idFileLogicGrpFormatPropertyName: 55,
+            idFileLogicGrpObjectClassifyRod: 8,
+            idFileLogicParasitifer: null,
+            idFileLogicParent: 3082,
+            idFilePhysics: 25120,
+            idUserFileLogicOwner: 14,
+        },
+        {
+            fileLogicCreateDatetime: "2018-08-21 11:49:23",
+            fileLogicHomeType: 3,
+            fileLogicIsDeletable: true,
+            fileLogicIsDeleted: false,
+            fileLogicIsOnlined: true,
+            fileLogicIsUpdatable: true,
+            fileLogicLevelCode: "1-232-233-234-3048-3060-3073-3082-59149",
+            fileLogicNameBase: "abxyze2353",
+            fileLogicNameExt: "jpg",
+            fileLogicSize: 596,
+            fileLogicStatus: "SUCCESS",
+            fileLogicUpdateDatetime: "2018-08-21 11:49:03",
+            fileLogicUploadDatetime: "2018-08-21 11:49:03",
+            idArchiveSelf: null,
+            idArchiveTemplate: null,
+            idFileLogic: 59149,
+            idFileLogicClient: "8dcaf2bc7fae467d8ea6c249ebce9afd",
+            idFileLogicGrandpa: null,
+            idFileLogicGrpFormatPropertyName: 55,
+            idFileLogicGrpObjectClassifyRod: 8,
+            idFileLogicParasitifer: null,
+            idFileLogicParent: 3082,
+            idFilePhysics: 25120,
+            idUserFileLogicOwner: 14,
+        },
+        {
+            fileLogicCreateDatetime: "2018-06-21 11:49:04",
+            fileLogicHomeType: 3,
+            fileLogicIsDeletable: true,
+            fileLogicIsDeleted: false,
+            fileLogicIsOnlined: true,
+            fileLogicIsUpdatable: true,
+            fileLogicLevelCode: "1-232-233-234-3048-3060-3073-3082-59149",
+            fileLogicNameBase: "11bxyze2353",
+            fileLogicNameExt: "wmv",
+            fileLogicSize: 959,
+            fileLogicStatus: "SUCCESS",
+            fileLogicUpdateDatetime: "2018-08-21 11:49:03",
+            fileLogicUploadDatetime: "2018-08-21 11:49:03",
+            idArchiveSelf: null,
+            idArchiveTemplate: null,
+            idFileLogic: 59149,
+            idFileLogicClient: "8dcaf2bc7fae467d8ea6c249ebce9afd",
+            idFileLogicGrandpa: null,
+            idFileLogicGrpFormatPropertyName: 55,
+            idFileLogicGrpObjectClassifyRod: 8,
+            idFileLogicParasitifer: null,
+            idFileLogicParent: 3082,
+            idFilePhysics: 25120,
+            idUserFileLogicOwner: 14,
+        },
+        {
+            fileLogicCreateDatetime: "2018-07-21 11:44:55",
+            fileLogicHomeType: 3,
+            fileLogicIsDeletable: true,
+            fileLogicIsDeleted: false,
+            fileLogicIsOnlined: true,
+            fileLogicIsUpdatable: true,
+            fileLogicLevelCode: "1-232-233-234-3048-3060-3073-3082-59149",
+            fileLogicNameBase: "22bxyze2353",
+            fileLogicNameExt: "json",
+            fileLogicSize: 3336,
+            fileLogicStatus: "SUCCESS",
+            fileLogicUpdateDatetime: "2018-08-21 11:43:55",
+            fileLogicUploadDatetime: "2018-08-21 11:43:55",
+            idArchiveSelf: null,
+            idArchiveTemplate: null,
+            idFileLogic: 59149,
+            idFileLogicClient: "8dcaf2bc7fae467d8ea6c249ebce9afd",
+            idFileLogicGrandpa: null,
+            idFileLogicGrpFormatPropertyName: 55,
+            idFileLogicGrpObjectClassifyRod: 8,
+            idFileLogicParasitifer: null,
+            idFileLogicParent: 3082,
+            idFilePhysics: 25120,
+            idUserFileLogicOwner: 14,
+        }
+    ]
+    window.onload = function () {
+        function fn() {
+            var str = ''
+            arr.forEach(function (val) {
+                str +=`<tr><td>${val.fileLogicNameBase}</td><td>${val.fileLogicNameExt}</td><td>${val.fileLogicSize}</td><td>${val.fileLogicCreateDatetime}</td></tr>`
+            });
+            $(".content table tbody").append(str)
+        };
+        fn()
+    }
+    var flag1 = false;
+    var flag2 = false;
+    var flag3 = false;
+    var flag4 = false;
+
+    function nameFn() {
+        $('.sort').html('')
+        flag1 = !flag1;
+        var bySort = function () {
+            return function (o, p) {  // p 是 o 的下一项
+                if (flag1 == true) {
+                    $(".btn1").val('名称降序排列');
+                    var a = o['fileLogicNameBase'],
+                        b = p['fileLogicNameBase'];
+                } else if (flag1 == false) {
+                    $(".btn1").val('名称升序排列');
+                    var b = o['fileLogicNameBase'],
+                        a = p['fileLogicNameBase'];
+                }
+                return a.localeCompare(b,"zh");  // 用本地特定顺序来比较(支持中文)
+            }
+        };
+        for (var i = 0; i < arr.length; i++) {
+            arr.sort(bySort(arr[i]['fileLogicNameBase']));
+        }
+        var str = ''
+        arr.forEach(function (val) {
+            str +=`<li>${val.fileLogicNameBase}</li>`
+        })
+        $('.sort').append(str)
+    }
+    function ExtFn() {
+        $('.sort').html('')
+        flag2 = !flag2;
+        var bySort = function () {
+            return function (o, p) {  // p 是 o 的下一项
+                if (flag2 == true) {
+                    $(".btn2").val( '类型降序排列');
+                    var a = o['fileLogicNameExt'],
+                        b = p['fileLogicNameExt'];
+                } else if (flag2 == false) {
+                    $(".btn2").val( '类型升序排列');
+                    var b = o['fileLogicNameExt'],
+                        a = p['fileLogicNameExt'];
+                }
+                return a.localeCompare(b,"zh");  // 用本地特定顺序来比较(支持中文)
+            }
+        };
+        for (var i = 0; i < arr.length; i++) {
+            arr.sort(bySort(arr[i]['fileLogicNameExt']));
+        }
+        var str = ''
+        arr.forEach(function (val) {
+            str +=`<li>${val.fileLogicNameExt}</li>`
+        })
+        $('.sort').append(str)
+    }
+    function SizeFn() {
+        $('.sort').html('')
+        flag3 = !flag3;
+        var bySort = function () {
+            return function (o, p) {  // p 是 o 的下一项
+                if (flag3 == true) {
+                    $(".btn3").val('大小降序排列');
+                    var a = o['fileLogicSize'],
+                        b = p['fileLogicSize'];
+                } else if (flag3 == false) {
+                    $(".btn3").val('大小升序排列');
+                    var b = o['fileLogicSize'],
+                        a = p['fileLogicSize'];
+                }
+                if(a > b){
+                    return 1
+                }else if(a < b){
+                    return -1
+                }else if(a == b){
+                    return 0
+                }
+            }
+        };
+        for (var i = 0; i < arr.length; i++) {
+            arr.sort(bySort(arr[i]['fileLogicSize']));
+        }
+        var str = ''
+        arr.forEach(function (val) {
+            str +=`<li>${val.fileLogicSize}</li>`
+        })
+        $('.sort').append(str)
+    }
+    function DateFn() {
+        $('.sort').html('')
+        flag4 = !flag4;
+        var bySort = function () {
+            return function (o, p) {  // p 是 o 的下一项
+                if (flag4 == true) {
+                    $(".btn4").val('大小降序排列');
+                    var a = o['fileLogicCreateDatetime'],
+                        b = p['fileLogicCreateDatetime'];
+                } else if (flag4 == false) {
+                    $(".btn4").val('大小升序排列');
+                    var b = o['fileLogicCreateDatetime'],
+                        a = p['fileLogicCreateDatetime'];
+                }
+                return a.localeCompare(b,"zh");  // 用本地特定顺序来比较(支持中文)
+            }
+        };
+        for (var i = 0; i < arr.length; i++) {
+            arr.sort(bySort(arr[i]['fileLogicCreateDatetime']));
+        }
+        var str = ''
+        arr.forEach(function (val) {
+            str +=`<li>${val.fileLogicCreateDatetime}</li>`
+        })
+        $('.sort').append(str)
+    }
+
+
+
+
+
+
+
+
+
+
+
+    //排序star
+    $scope.SortIcon = "icon-common-window-down";
+    $scope.SortIcon1 = "icon-common-window-down";
+    $scope.SortIcon2 = "icon-common-window-down";
+    $scope.SortIcon3 = "icon-common-window-down";
+    $scope.SortIcon4 = "icon-common-window-down";
+    $scope.NameSortFlag = false;//默认降序(名称)
+    $scope.EtxSortFlag = false;//默认降序(类型)
+    $scope.SizeSortFlag = false;//默认降序（大小排序）
+    $scope.DateSortFlag = false;//默认降序(创建日期排序)
+    $scope.UpdateSortFlag = false;//默认降序(修改日期排序)
+    //文件显示区按照名称排序
+    $scope.NameSort = function (arr, sortStr) {//arr原数组。sortStr排序属性
+        $scope.NameSortFlag = !$scope.NameSortFlag;
+        var bySort = function () {
+            return function (o, p) {  // p 是 o 的下一项
+                if ($scope.NameSortFlag == true) {
+                    $scope.SortIcon = "icon-common-window-up";
+                    var a = o[sortStr],
+                        b = p[sortStr];
+                } else if ($scope.NameSortFlag == false) {
+                    $scope.SortIcon = "icon-common-window-down";
+                    var b = o[sortStr],
+                        a = p[sortStr];
+                }
+                return a.localeCompare(b,"zh");  // 用本地特定顺序来比较(支持中文)
+            }
+        };
+        for (var i = 0; i < arr.length; i++) {
+            arr.sort(bySort(arr[i][sortStr]));
+        }
+    };
+    //文件显示区按照类型排序
+    $scope.ExtSort = function (arr, sortStr) {//arr原数组。sortStr排序属性
+        $scope.EtxSortFlag = !$scope.EtxSortFlag;
+        var bySort = function () {
+            return function (o, p) {  // p 是 o 的下一项
+                if ($scope.EtxSortFlag == true) {
+                    $scope.SortIcon1 = "icon-common-window-up";
+                    var a = o[sortStr],
+                        b = p[sortStr];
+                } else if ($scope.EtxSortFlag == false) {
+                    $scope.SortIcon1 = "icon-common-window-down";
+                    var b = o[sortStr],
+                        a = p[sortStr];
+                }
+                return a.localeCompare(b);  // 用本地特定顺序来比较(支持中文)
+            }
+        };
+        for (var i = 0; i < arr.length; i++) {
+            arr.sort(bySort(arr[i][sortStr]));
+        }
+    };
+    //文件显示区按照大小排序
+    $scope.SizeSort = function(arr,sortStr){
+        $scope.SizeSortFlag = !$scope.SizeSortFlag;
+        var bySort = function () {
+            return function (o,p) {
+                if($scope.SizeSortFlag == true){
+                    $scope.SortIcon2 = "icon-common-window-up";
+                    var a = o[sortStr],
+                        b = p[sortStr];
+                }else if($scope.SizeSortFlag == false){
+                    $scope.SortIcon2 = "icon-common-window-down";
+                    var b = o[sortStr],
+                        a = p[sortStr];
+                }
+                if(a > b){
+                    return 1
+                }else if(a < b){
+                    return -1
+                }else if(a == b){
+                    return 0
+                }
+
+            }
+        }
+        for (var i = 0; i < arr.length; i++) {
+            arr.sort(bySort(arr[i][sortStr]));
+        }
+    }
+    //文件显示区按照创建日期排序
+    $scope.DateSort = function(arr,sortStr){
+        $scope.DateSortFlag = !$scope.DateSortFlag;
+        var bySort = function () {
+            return function (o,p) {
+                if($scope.DateSortFlag == true){
+                    $scope.SortIcon3 = "icon-common-window-up";
+                    var a = o[sortStr],
+                        b = p[sortStr];
+                }else if($scope.DateSortFlag == false){
+                    $scope.SortIcon3 = "icon-common-window-down";
+                    var b = o[sortStr],
+                        a = p[sortStr];
+                }
+                return a.localeCompare(b);  // 用本地特定顺序来比较(支持中文)
+
+            }
+        }
+        for (var i = 0; i < arr.length; i++) {
+            arr.sort(bySort(arr[i][sortStr]));
+        }
+    }
+    $scope.UpdateSort = function(arr,sortStr){
+        $scope.UpdateSortFlag = !$scope.UpdateSortFlag;
+        var bySort = function () {
+            return function (o,p) {
+                if($scope.UpdateSortFlag == true){
+                    $scope.SortIcon4 = "icon-common-window-up";
+                    var a = o[sortStr],
+                        b = p[sortStr];
+                }else if($scope.UpdateSortFlag == false){
+                    $scope.SortIcon4 = "icon-common-window-down";
+                    var b = o[sortStr],
+                        a = p[sortStr];
+                }
+                return a.localeCompare(b);  // 用本地特定顺序来比较(支持中文)
+            }
+        }
+        for (var i = 0; i < arr.length; i++) {
+            arr.sort(bySort(arr[i][sortStr]));
+        }
+    }
+    //end
+</script>
+</html>
